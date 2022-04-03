@@ -22,7 +22,7 @@ export const sendEmail = async (user: User) => {
   transporter.sendMail(options, function (error, info) {
     if (error) {
       console.error(error);
-      return;
+      return error;
     }
     console.info(info);
   });
