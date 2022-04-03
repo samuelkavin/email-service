@@ -1,9 +1,8 @@
 import * as nodemailer from 'nodemailer';
 import { User } from '../user/type/user.type';
-import 'dotenv/config';
 
 export const sendEmail = async (user: User) => {
-  const { email, message } = user;
+  const { email, message, name, mobile } = user;
   const transporter = nodemailer.createTransport({
     service: 'hotmail',
     auth: {
@@ -16,7 +15,14 @@ export const sendEmail = async (user: User) => {
     from: 'samuelkavin-123456@outlook.com',
     to: `${email}`,
     subject: 'Automated Email',
-    text: `${message}`,
+    text: `
+      Name: ${name}
+      Message: ${message}
+      Email: ${email}
+      Mobile: ${mobile}
+
+      Thank you!
+    `,
   };
 
   transporter.sendMail(options, function (error, info) {

@@ -4,32 +4,41 @@
 
 ## Description
 
-Simple email service for Pickle Auction with Nestjs and Nodemailer
+Simple email service for Pickle Auction with Nestjs and Nodemailer. There are 4 fields and all of them are required. Please enter your real email in email field to receive a copy of an email.
+
+```
+{
+  "name": "John Doe",
+  "message": "Example inquiry message",
+  "mobile": "+60121234567",
+  "email": "example@gmail.com"
+}
+```
+
+##### Features
+
+- Added swagger for API documentation
+- Added global error handling filter and validation pipe
+- Used nodemailer and hotmail service instead setup SMTP Service
+
+##### Thing should improve
+- Add user registration payload to DB
+
 
 ## Prerequisites
 - node >= 14.17.5
 - npm >= 6.14.14
 
-## Installation
+## Installation & Running the app
 
 ```bash
 $ git clone https://github.com/samuelkavin/email-service.git <folder-name>
 $ cd <folder-name>
 $ npm install
-```
-
-## Running the app
-
-```bash
-# development
 $ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+open url in browser ( http://localhost:3000/api/ )
 ```
+
 ## Architecture
 
 <p align="center">
@@ -41,38 +50,26 @@ $ npm run start:prod
 ```
 src
 └── modules
-│ └─── email 						   // nodemailer & email service configurations 
-│ └─── user							 // user registration api 
-├── main.ts							   // app, cors & swagger config
+│ └─── email 				# nodemailer & email service configurations 
+│ └─── user				  # user registration api 
+├── main.ts					 # app, cors & swagger config
 │.eslintrc.js
+│.prettierrc
 │tsconfig.json
 │package.json
-│.prettierrc
 
 ```
 
 ## Test
-
+Please run following command for unit test. I only have covered for user module due to time constraint.
 ```bash
 # unit tests
 $ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
