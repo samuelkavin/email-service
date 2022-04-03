@@ -30,6 +30,26 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+## Architecture
+
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://i.postimg.cc/sXXcwTTK/Screenshot-2022-04-03-at-11-20-23-PM.png" width="100%" alt="Nest Logo" /></a>
+</p>
+
+
+###### Folder Structure
+```
+src
+└── modules
+│ └─── email 						   // nodemailer & email service configurations 
+│ └─── user							 // user registration api 
+├── main.ts							   // app, cors & swagger config
+│.eslintrc.js
+│tsconfig.json
+│package.json
+│.prettierrc
+
+```
 
 ## Test
 
