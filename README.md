@@ -18,11 +18,12 @@ Simple email service for Pickle Auction with Nestjs and Nodemailer. There are 4 
 ##### Features
 
 - Added swagger for API documentation
-- Added global error handling filter and validation pipe
+- Added global validation pipe
 - Used nodemailer and hotmail service instead setup SMTP Service
 
 ##### Thing should improve
 - Add user registration payload to DB
+- Add config file to include global variables
 
 
 ## Prerequisites

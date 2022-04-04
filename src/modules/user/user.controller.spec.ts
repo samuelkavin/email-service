@@ -7,7 +7,7 @@ import { UserService } from './user.service';
 describe('UserController', () => {
   let controller: UserController;
   const mockedUserService = {
-    registerUser: jest.fn(),
+    registerUserInquiry: jest.fn(),
   };
 
   beforeEach(async () => {
@@ -27,7 +27,7 @@ describe('UserController', () => {
     expect(controller).toBeDefined();
   });
 
-  describe('registerUser()', () => {
+  describe('registerUserInquiry()', () => {
     it('Should return success message when register successfully', async () => {
       // prepare
       const mockBody: UserDto = {
@@ -37,15 +37,15 @@ describe('UserController', () => {
         mobile: '+60121234567',
       };
 
-      mockedUserService.registerUser.mockImplementation(() => ({
+      mockedUserService.registerUserInquiry.mockImplementation(() => ({
         ...mockBody,
       }));
 
       // Action
-      const result = await controller.registerUser(mockBody);
+      const result = await controller.registerUserInquiry(mockBody);
 
       // Assert
-      expect(mockedUserService.registerUser).toBeCalled();
+      expect(mockedUserService.registerUserInquiry).toBeCalled();
     });
   });
 });

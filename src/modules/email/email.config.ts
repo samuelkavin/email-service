@@ -25,11 +25,11 @@ export const sendEmail = async (user: User) => {
     `,
   };
 
-  transporter.sendMail(options, function (error, info) {
-    if (error) {
+  await transporter.sendMail(options, function (error, info) {
+    try {
+      console.info(info);
+    } catch (error) {
       console.error(error);
-      return error;
     }
-    console.info(info);
   });
 };

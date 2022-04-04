@@ -6,14 +6,14 @@ import { UserDto } from './dto/user.dto';
 export class UserService {
   constructor(private emailService: EmailService) {}
 
-  async registerUser(user: UserDto): Promise<{ message: string }> {
+  async registerUserInquiry(user: UserDto): Promise<{ email: string }> {
     try {
-      await this.emailService.sendRegistrationEmail(user);
+      await this.emailService.sendEmailCopy(user);
     } catch (error) {
       throw new HttpException('Something went wrong!', HttpStatus.BAD_REQUEST);
     }
     return {
-      message: `Email succefully sent to ${user.email}`,
+      email: user.email,
     };
   }
 }

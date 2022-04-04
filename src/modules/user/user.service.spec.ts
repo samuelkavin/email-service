@@ -28,11 +28,9 @@ describe('UserService', () => {
         mobile: '+60121234567',
       };
 
-      const result = await service.registerUser(mockBody);
+      const result = await service.registerUserInquiry(mockBody);
 
-      await expect(result.message).toEqual(
-        `Email succefully sent to ${mockBody.email}`,
-      );
+      await expect(result.email).toEqual(`${mockBody.email}`);
     });
 
     it('Should throw validation error when passing empty data', async () => {
@@ -42,9 +40,9 @@ describe('UserService', () => {
         email: 'example@example.com',
         mobile: '+60121234567',
       };
-
-      const result = service.registerUser(mockBody);
-      expect(result).rejects.toBeTruthy();
+      service
+        .registerUserInquiry(mockBody)
+        .then((data) => expect(data).rejects.toBeTruthy());
     });
   });
 });

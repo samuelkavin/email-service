@@ -15,18 +15,33 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private userService: UserService) {}
 
-  @Post()
+  @Post('inquiry')
   @ApiResponse({
     status: HttpStatus.CREATED,
     description: 'User successfully created',
   })
-  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
+  @ApiResponse({
+    status: HttpStatus.INTERNAL_SERVER_ERROR,
+    description: 'Internal server error',
+    type: Error,
+  })
+  @ApiResponse({
+    status: HttpStatus.BAD_GATEWAY,
+    description: 'Internal communication error',
+    type: Error,
+  })
   @ApiOperation({
-    operationId: 'createUser',
-    summary: 'Create user info',
+    operationId: 'createUserIquiry',
+    summary: 'Create user inquiry',
   })
   @UsePipes(ValidationPipe)
-  async registerUser(@Body() user: UserDto): Promise<{ message: string }> {
-    return this.userService.registerUser(user);
+  async registerUserInquiry(
+    @Body() user: UserDto,
+  ): Promise<{ message: string }> {
+    const result = await this.userService.registerUserInquiry(user);
+
+    return {
+      message: `Email succefully sent to ${result.email}`,
+    };
   }
 }
