@@ -28,8 +28,10 @@ export const sendEmail = async (user: User) => {
   await transporter.sendMail(options, function (error, info) {
     try {
       console.info(info);
+      return info;
     } catch (error) {
       console.error(error);
+      throw error;
     }
   });
 };

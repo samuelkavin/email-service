@@ -1,4 +1,3 @@
-import { HttpException, HttpStatus } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { EmailService } from '../email/email.service';
 import { UserDto } from './dto/user.dto';
@@ -31,18 +30,6 @@ describe('UserService', () => {
       const result = await service.registerUserInquiry(mockBody);
 
       await expect(result.email).toEqual(`${mockBody.email}`);
-    });
-
-    it('Should throw validation error when passing empty data', async () => {
-      const mockBody: UserDto = {
-        name: '',
-        message: '',
-        email: 'example@example.com',
-        mobile: '+60121234567',
-      };
-      service
-        .registerUserInquiry(mockBody)
-        .then((data) => expect(data).rejects.toBeTruthy());
     });
   });
 });

@@ -7,13 +7,19 @@ export class UserService {
   constructor(private emailService: EmailService) {}
 
   async registerUserInquiry(user: UserDto): Promise<{ email: string }> {
-    try {
-      await this.emailService.sendEmailCopy(user);
-    } catch (error) {
+    const { email } = user;
+    let result: string;
+
+    if (!email) {
       throw new HttpException('Something went wrong!', HttpStatus.BAD_REQUEST);
     }
+
+    if (email) {
+      result = await this.emailService.sendEmailCopy(user);
+    }
+
     return {
-      email: user.email,
+      email: result,
     };
   }
 }
