@@ -23,7 +23,6 @@ Simple email service for Pickle Auction with Nestjs and Nodemailer. There are 4 
 
 ##### Thing should improve
 - Add user registration payload to DB
-- Add config file to include global variables
 - Add unit test for other modules. Currently only focused on user module (100%)
 
 
