@@ -31,5 +31,18 @@ describe('UserService', () => {
 
       await expect(result.email).toEqual(`${mockBody.email}`);
     });
+
+    it('Should throw validation error when passing empty data', async () => {
+      const mockBody: UserDto = {
+        name: 'John Doe',
+        message: 'Example inquiry message',
+        email: '',
+        mobile: '+60121234567',
+      };
+
+      service
+        .registerUserInquiry(mockBody)
+        .then((data) => expect(data).rejects.toBeTruthy());
+    });
   });
 });
